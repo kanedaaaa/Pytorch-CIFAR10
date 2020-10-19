@@ -11,7 +11,7 @@ import numpy as np
 device = torch.device('cuda')
 print('Using device:', device)
 print('GPU:', torch.cuda.get_device_name(0))
-net = CNN().to(device)
+net = resnet().to(device)
 
 transform = transforms.Compose(
     [transforms.ToTensor(),
@@ -19,10 +19,10 @@ transform = transforms.Compose(
 )
 
 trainset = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=transform)
-trainloader = torch.utils.data.DataLoader(trainset, batch_size=10, shuffle=True)
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=100, shuffle=True)
 
 testset = torchvision.datasets.CIFAR10(root='./data', train=False, download=True, transform=transform)
-testloader = torch.utils.data.DataLoader(testset, batch_size=10, shuffle=True)
+testloader = torch.utils.data.DataLoader(testset, batch_size=100, shuffle=True)
 
 classes = ('plane', 'car', 'bird', 'cat', 'deer', 
            'dog', 'frog', 'horse', 'ship', 'truck')

@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-class CNN(nn.Module):
+class LeNet(nn.Module):
   def __init__(self):
     super(CNN, self).__init__()
 
@@ -27,6 +27,5 @@ class CNN(nn.Module):
 
     return pred  
 
-cnn = CNN()
-print(cnn)
+net = LeNet()
 
