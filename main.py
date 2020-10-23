@@ -11,7 +11,9 @@ import numpy as np
 device = torch.device('cuda')
 print('Using device:', device)
 print('GPU:', torch.cuda.get_device_name(0))
-net = resnet().to(device)
+
+#net = resnet().to(device)
+net = LeNet().to(device)
 
 transform = transforms.Compose(
     [transforms.ToTensor(),
@@ -31,23 +33,18 @@ classes = ('plane', 'car', 'bird', 'cat', 'deer',
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
 
-num_epochs = 20
+num_epochs = 10
 losses = []
 batches = len(trainloader)
 
 def train():
    print("TRAINING")
    for epoch in range(num_epochs):
-
       progress = tqdm(enumerate(trainloader), desc="Loss: ", total=batches)
-
       total_loss = 0
       for i, (inputs, labels) in progress:
-         
          inputs, labels = inputs.to(device), labels.to(device)
-
          optimizer.zero_grad()
-
          output= net(inputs)
          loss = criterion(output, labels)
          
@@ -56,13 +53,11 @@ def train():
          
          current_loss = loss.item()
          total_loss += current_loss
-
          progress.set_description("Loss: {:.4f}".format(total_loss/(i+1)))
-
       losses.append(total_loss/batches)
       print(f"Epoch {epoch+1}/{num_epochs}, Loss: {total_loss/batches}")
 
-   torch.save(net, './save')
+   #torch.save(net, './save')
 
 
 def test():
@@ -81,6 +76,8 @@ def test():
 
    model_accuracy = total_correct / total_images * 100
    print('Model accuracy on {0} test images: {1:.2f}%'.format(total_images, model_accuracy))
+
+#net = torch.load("save")
 
 train()
 test()
