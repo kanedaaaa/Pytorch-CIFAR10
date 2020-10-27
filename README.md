@@ -1,8 +1,7 @@
 # pytorch-cifar10
 **UPDATE**
-Model | Epoch | Accuracy
---- | --- | --- |
-LeNet5 | 20 | 65%
-ResNet | 20 | 76%
-
-*These models were created for learning purposes, because of this, code isn't optimized for maximum performance*
+Model | GPU | Accuracy | Training Time
+--- | --- | --- | --- | 
+[LeNet5](https://github.com/kanedaaaa/pytorch-cifar10/blob/main/models/lenet.py) | Tesla T4 | 67.15% | ...
+[ResNet](https://github.com/kanedaaaa/pytorch-cifar10/blob/main/models/resnet.py) | Tesla T4 | 76.14% | 21 min
+[VGG16](https://github.com/kanedaaaa/pytorch-cifar10/blob/main/models/vgg.py) | Tesla T4 | 78.60% | 6 min
