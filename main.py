@@ -10,10 +10,11 @@ import numpy as np
 
 device = torch.device('cuda')
 print('Using device:', device)
-print('GPU:', torch.cuda.get_device_name(0))
+#print('GPU:', torch.cuda.get_device_name(0))
 
 #net = resnet().to(device)
-net = LeNet().to(device)
+#net = LeNet().to(device)
+net = VGG().to(device)
 
 transform = transforms.Compose(
     [transforms.ToTensor(),
@@ -33,7 +34,7 @@ classes = ('plane', 'car', 'bird', 'cat', 'deer',
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
 
-num_epochs = 10
+num_epochs = 7
 losses = []
 batches = len(trainloader)
 
