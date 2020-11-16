@@ -14,7 +14,8 @@ print('Using device:', device)
 
 #net = resnet().to(device)
 #net = LeNet().to(device)
-net = VGG().to(device)
+#net = VGG().to(device)
+net = GoogLeNet().to(device)
 
 transform = transforms.Compose(
     [transforms.ToTensor(),
