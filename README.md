@@ -22,4 +22,4 @@ Model | GPU | Accuracy | Training Time
 VGG19 | Tesla T4 | 78.51% | 7 min
 
 # Extras
-`none`
+project is no longed maintained 
